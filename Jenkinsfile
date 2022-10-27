@@ -6,18 +6,18 @@ pipeline{
 
         stage('Cloning from GitHub') {
                 steps {
-                    git branch: 'main', url: 'https://github.com/malek-bzg/Devops.git'
+                    git branch: 'main', url: 'https://github.com/KlaiGhassen/devops'
                 }
                 
             }
       
-      stage('Clean'){
+      stage('Clean Maven'){
             steps {
                 sh 'mvn clean '
             }
             
         }
-        stage('Compile'){
+        stage('Compile Project'){
             steps {
                 sh 'mvn compile  -DskipTests'
             }
@@ -45,12 +45,12 @@ pipeline{
         
         
         
-        stage('Nexus'){
+   /*     stage('Nexus'){
             steps{
                 sh 'mvn deploy -DskipTests'
             }
         }
-        
+     */
         
       
 
