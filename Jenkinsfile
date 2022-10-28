@@ -45,12 +45,12 @@ pipeline{
         
         
         
-   /*     stage('Nexus'){
+       stage('Nexus'){
             steps{
                 sh 'mvn deploy -DskipTests'
             }
         }
-     */
+     
         
       
 
