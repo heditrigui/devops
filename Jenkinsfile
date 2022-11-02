@@ -10,7 +10,7 @@ pipeline {
          steps {
                 echo 'cloning project from GIT'
                 git branch : "issam" , 
-                url :'https://github.com/IssamDziri/Projet-Devops.git'
+                url :'https://github.com/KlaiGhassen/devops'
             }
         }
         stage('MVN CLEAN') {
