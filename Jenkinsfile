@@ -43,10 +43,10 @@ pipeline {
         sh 'mvn deploy -DskipTests'
       }
     }
-        /*
+       
      stage("Building Docker Image") {
                 steps{
-                    sh 'docker build -t issamdziri97/achat .'
+                    sh 'docker build -t gaston2100/achat .'
                 }
         }
         
@@ -54,12 +54,12 @@ pipeline {
            stage("Login to DockerHub") {
                 steps{
                    // sh 'sudo chmod 666 /var/run/docker.sock'
-                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u issamdziri97 -p 123456789Aa'
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u gaston2100 -p hinda2100@@'
                 }
         }
         stage("Push to DockerHub") {
                 steps{
-                    sh 'docker push issamdziri97/achat'
+                    sh 'docker push gaston2100/achat'
                 }
         }
     
@@ -72,18 +72,16 @@ pipeline {
     
     post {
                 success {
-                     mail to: "issam.dziri@esprit.tn",
+                     mail to: "ghassen.klai@esprit.tn,
                      subject: "success",
                      body: "success on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
                 }
 failure {
-                    mail to: "issam.dziri@esprit.tn",
+                    mail to: "ghassen.klai@esprit.tn",
                      subject: "Failure",
                      body: "Failure on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL} "     
                 }
-            
-
-        */     
+             
        
     }
 
