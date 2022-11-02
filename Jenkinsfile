@@ -72,7 +72,7 @@ pipeline {
     
     post {
                 success {
-                     mail to: "ghassen.klai@esprit.tn,
+                     mail to: "ghassen.klai@esprit.tn",
                      subject: "success",
                      body: "success on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
                 }
