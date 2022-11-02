@@ -5,13 +5,12 @@ pipeline {
     }
 
     stages {
-        stage('GIT') {
-          
-         steps {
-                echo 'cloning project from GIT'
-                url :'https://github.com/KlaiGhassen/devops'
+         stage('Cloning from GitHub') {
+                steps {
+                    git branch: 'main', url: 'https://github.com/KlaiGhassen/devops'
+                }
+                
             }
-        }
         stage('MVN CLEAN') {
             steps {
                sh 'mvn clean'
