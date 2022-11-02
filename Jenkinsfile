@@ -24,12 +24,12 @@ pipeline{
             
         }
         
-        
-        /* stage('UNIT test'){
+      
+        stage('UNIT test'){
             steps{
                 sh 'mvn test'
             }
-        }*/
+        }
 
          stage('SonarQube Analysis'){
                 steps {
