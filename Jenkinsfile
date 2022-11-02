@@ -9,7 +9,6 @@ pipeline {
           
          steps {
                 echo 'cloning project from GIT'
-               
                 url :'https://github.com/KlaiGhassen/devops'
             }
         }
