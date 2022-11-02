@@ -98,17 +98,11 @@
 
 	</dependencies>
 
-	<!-- Deploy to Nexus -->
-	<distributionManagement>
-		<repository>
-			<id>deploymentRepo</id>
-			<name>Nexus Repository</name>
-			<url>http://192.168.1.18:8081/repository/maven-releases/</url>
-		</repository>
-	</distributionManagement>
+
 
 	<build>
 		<plugins>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -122,13 +116,12 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>3.1.0</version>
 			</plugin>
-			
-		
 			<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-surefire-plugin</artifactId>
@@ -171,5 +164,13 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>deploymentRepo</id>
+			<name>admin</name>
+			<url>http://192.168.33.10:8081/repository/maven-releases/</url>
+		</repository>
+	</distributionManagement>
 
 </project>
