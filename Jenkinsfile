@@ -18,12 +18,12 @@ pipeline {
         }
           stage('Test') {
             steps {
-               sh 'mvn package'
+               sh 'mvn test'
             }
         }
           stage('Test') {
             steps {
-               sh 'mvn test'
+               sh 'mvn package'
             }
         }
         stage('MVN COMPILE') {
