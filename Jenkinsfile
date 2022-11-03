@@ -70,7 +70,7 @@ pipeline {
         }
     }
     
-    post {
+ /*   post {
                 success {
                      mail to: "ghassen.klai@esprit.tn",
                      subject: "success",
@@ -83,6 +83,6 @@ failure {
                 }
              
        
-    }
+    }*/
 
 }
