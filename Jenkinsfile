@@ -11,6 +11,12 @@ pipeline {
                 }
                 
             }
+          stage('MVN COMPILE') {
+            steps {
+               sh 'mvn compile'
+            
+           }
+        }
         stage('MVN CLEAN') {
             steps {
                sh 'mvn clean'
@@ -26,12 +32,7 @@ pipeline {
                sh 'mvn package'
             }
         }
-        stage('MVN COMPILE') {
-            steps {
-               sh 'mvn compile'
-            
-           }
-        }
+      
       
         stage ('Scan Sonar'){
             steps {
