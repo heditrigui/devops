@@ -16,7 +16,7 @@ services:
   spring_app:
     depends_on:
       - mysqldb
-    image: issamdziri97/achat
+    image: gaston2100/achat
     ports:
       - 8089:8089
     restart: always
