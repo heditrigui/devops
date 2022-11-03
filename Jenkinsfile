@@ -7,7 +7,7 @@ pipeline {
     stages {
          stage('Cloning from GitHub') {
                 steps {
-                    git branch: 'main', url: 'https://github.com/zwayten/tpAchatProject'
+                    git branch: 'main', url: 'https://github.com/KlaiGhassen/devops'
                 }
                 
             }
