@@ -19,7 +19,7 @@ pipeline {
         }
         stage('MVN CLEAN') {
             steps {
-               sh 'mvn clean'
+               sh 'mvn clean install'
             }
         }
           stage('Test') {
@@ -40,7 +40,7 @@ pipeline {
     sh "mvn sonar:sonar \
   -Dsonar.projectKey=sonar2 \
   -Dsonar.host.url=http://192.168.33.10:9000 \
-  -Dsonar.login=e69bd39e2c859839518eead6cb3dd3f8df69d0c0"
+  -Dsonar.login=e69bd39e2c859839518eead6cb3dd3f8df69d0c0 -DskipTests"
 
     }
         }
