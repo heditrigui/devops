@@ -11,6 +11,9 @@ services:
      - MYSQL_ROOT_PASSWORD=root
      - MYSQL_DATABASE=achatdb
      - MYSQL_PASSWORD=root
+    volumes:  
+     - /home/mysql/data:/var/lib/mysql
+
 
 
   spring_app:
