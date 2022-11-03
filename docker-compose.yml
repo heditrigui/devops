@@ -18,7 +18,7 @@ services:
     container_name: achatspring
     restart: on-failure
     environment:
-     - spring.datasource.url=jdbc:mysql://mysqldb:3306/achatdb?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+     - spring.datasource.url=jdbc:mysql://mysqldb:3306/achatdb?achatdb?createDatabaseIfNotExist=true&useSSL=false
     ports:
      - 8089:8089
     depends_on:
