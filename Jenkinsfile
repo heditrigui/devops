@@ -7,7 +7,7 @@ pipeline {
     stages {
          stage('Cloning from GitHub') {
                 steps {
-                    git branch: 'main', url: 'https://github.com/KlaiGhassen/devops'
+                    git branch: 'main', url: 'https://github.com/salahdabbech1/Esprit_SpringDevOps_5SIM'
                 }
                 
             }
