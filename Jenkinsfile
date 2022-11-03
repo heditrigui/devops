@@ -38,9 +38,9 @@ pipeline {
             steps {
         
     sh "mvn sonar:sonar \
-  -Dsonar.projectKey=sonar \
+  -Dsonar.projectKey=sonar2 \
   -Dsonar.host.url=http://192.168.33.10:9000 \
-  -Dsonar.login=a2419f8c6544a075dfb65f407db2d0c82a7f67ee"
+  -Dsonar.login=e69bd39e2c859839518eead6cb3dd3f8df69d0c0"
 
     }
         }
