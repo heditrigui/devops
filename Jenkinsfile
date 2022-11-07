@@ -8,13 +8,11 @@ pipeline {
          stage('Cloning from GitHub') {
                 steps {
                     git branch: 'main', url: 'https://github.com/KlaiGhassen/devops'
-                }
-                
+                }  
             }
           stage('MVN COMPILE') {
             steps {
                sh 'mvn compile'
-            
            }
         }
         stage('MVN CLEAN') {
@@ -27,26 +25,17 @@ pipeline {
                sh 'mvn test'
             }
         }
-          stage('mvn package') {
-            steps {
-               sh 'mvn package'
-            }
-        }
           stage('mvn Verify') {
-                    steps {
-                       sh 'mvn verify'
-                    }
-                }
-      
-      
-        stage ('Scan Sonar'){
+             steps {
+               sh 'mvn verify'
+          }
+       }
+         stage ('Scan Sonar'){
             steps {
-        
     sh "mvn sonar:sonar \
   -Dsonar.projectKey=sonar2 \
   -Dsonar.host.url=http://192.168.33.10:9000 \
   -Dsonar.login=e69bd39e2c859839518eead6cb3dd3f8df69d0c0 -DskipTests"
-
     }
         }
         stage('Nexus') {
