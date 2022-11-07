@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+target/classes
+target/generated-sources
+target/maven-archiver
+target/maven-status
+target/site
+target/test-classes
+target/achat-1.0.jar
+target/achat-1.0.jar.original
