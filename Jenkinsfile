@@ -19,19 +19,24 @@ pipeline {
         }
         stage('MVN CLEAN') {
             steps {
-               sh 'mvn clean install'
+               sh 'mvn clean '
             }
         }
-          stage('Test') {
+          stage('mvn Test') {
             steps {
                sh 'mvn test'
             }
         }
-          stage('Test package') {
+          stage('mvn package') {
             steps {
                sh 'mvn package'
             }
         }
+          stage('mvn Verify') {
+                    steps {
+                       sh 'mvn verify'
+                    }
+                }
       
       
         stage ('Scan Sonar'){
