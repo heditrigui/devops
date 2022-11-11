@@ -1,15 +1,15 @@
 pipeline {
-    agent any
-    environment{
-        PATH = "$PATH:/usr/share/maven/bin"
-    }
+agent any
 
-    stages {
+stages {
+ 
+
          stage('Cloning from GitHub') {
                 steps {
-                    git branch: 'main', url: 'https://github.com/KlaiGhassen/devops'
+                    git branch: 'main', url: 'https://github.com/heditrigui/devops.git'
                 }  
             }
+           
                stage('MVN CLEAN') {
                         steps {
                            sh 'mvn clean '
@@ -31,55 +31,45 @@ pipeline {
                sh 'mvn verify'
           }
        }
-         stage ('Scan Sonar'){
-            steps {
-    sh "mvn sonar:sonar \
-  -Dsonar.projectKey=sonar2 \
-  -Dsonar.host.url=http://192.168.33.10:9000 \
-  -Dsonar.login=e69bd39e2c859839518eead6cb3dd3f8df69d0c0 -DskipTests"
+       stage ('sonar '){
+    steps {
+       script {
+           withSonarQubeEnv('sonarqube_token'){
+               sh "mvn sonar:sonar"
+           }
+       }
     }
-        }
-        stage('Nexus') {
+       }
+           stage('Nexus') {
       steps {
         sh 'mvn deploy -DskipTests'
       }
     }
-       
-     stage("Building Docker Image") {
+stage("Building Docker Image") {
                 steps{
-                    sh 'docker build -t gaston2100/achat .'
+                   
+                    sh 'docker build -t heditrigui/achat .'
                 }
         }
-        
-        
-           stage("Login to DockerHub") {
+    stage("Login to DockerHub") {
                 steps{
-                   // sh 'sudo chmod 666 /var/run/docker.sock'
-                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u gaston2100 -p hinda2100@@'
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u heditrigui -p dockerpass'
                 }
         }
-        stage("Push to DockerHub") {
+    stage("Push to DockerHub") {
                 steps{
-                    sh 'docker push gaston2100/achat'
+                    sh 'docker push heditrigui/achat'
                 }
         }
-    
-               stage("Docker-compose") {
-                steps{
-                    sh 'docker-compose up -d'
-                }
-        }
-    }
-    
-    post {
-                success {
-                   echo 'succes'
-                }
-failure {
-                  echo 'failed'   
-                }
-             
-       
-    }
+}
+   post { 
+    success { 
+        mail to: "hedi.trigui@esprit.tn", 
+        subject: "Welcome to DevOps project Front-End : Pipeline Success", 
+        body: "success on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}" } 
+    failure { mail to: "hedi.trigui@esprit.tn", 
+    subject: "Pipeline Failure", 
+    body: "Welcome to DevOps project Front-End :Failure on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL} " } 
+}
 
 }
